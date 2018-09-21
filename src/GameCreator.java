@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameCreator {
-    Deck deck;
-    ListOfPlayers listOfPlayers;
-    Discard discard;
-    List<Player> gamePlayers;
+    private Deck deck;
+    private ListOfPlayers listOfPlayers;
+    private Discard discard;
+    private List<Player> gamePlayers;
 
     public GameCreator() {
         deck = new Deck();
@@ -31,5 +31,24 @@ public class GameCreator {
 
     public List<Player> getGamePlayers() {
         return gamePlayers;
+    }
+
+    public List<Card> getPlayerCards(int x){
+        return gamePlayers.get(x).getPlayerHand();
+    }
+    public List<Card> getDeckCards(){
+        return deck.getUnoDeck();
+    }
+    public List<Card> getDiscard(){
+        return discard.getDiscardPile();
+    }
+    public void addCardToDiscard(Card card){
+        discard.addToDiscardPile(card);
+    }
+    public void addCardToPlayerHand(int position, Card card){
+        gamePlayers.get(position).addCardToHand(card);
+    }
+    public void addCardToDeck(Card card){
+        deck.addCard(card);
     }
 }
